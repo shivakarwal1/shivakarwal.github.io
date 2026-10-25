@@ -650,7 +650,29 @@ section:last-of-type { border-bottom: none; }
   .intro-tab { padding: 0 20px; }
   .intro-social { gap: 16px; padding-right: 20px; }
 }
-  </style>
+    /* Dark gradient for all sections */
+section,
+section:nth-of-type(even) {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(150, 90, 70, 0.35), transparent 55%),
+    linear-gradient(160deg, #1d2530 0%, #2f3338 50%, #1b2028 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section .section-title { color: #ffffff; }
+section .section-subtitle { color: rgba(255, 255, 255, 0.7); }
+section .section-title::after { background: #9cc3f0; }
+
+.about-text { color: rgba(255, 255, 255, 0.88); }
+
+.job-header h3 { color: #ffffff; }
+.job-company { color: #9cc3f0; }
+.job-date { color: rgba(255, 255, 255, 0.6); }
+.job ul { color: rgba(255, 255, 255, 0.82); }
+.job::before { border-color: #1d2530; }
+
+#contact .contact-heading { color: #ffffff; }
+</style>
 </head>
 <body>
 
