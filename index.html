@@ -534,7 +534,123 @@ section:last-of-type { border-bottom: none; }
 @media (max-width: 720px) {
   .hero { padding: 64px 0 56px; }
   .hero h1 { font-size: 2.2rem; }
-}</style>
+}
+    /* Intro hero (dark, full screen) */
+.intro {
+  position: relative;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  padding: 80px 24px 140px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(150, 90, 70, 0.35), transparent 55%),
+    linear-gradient(160deg, #1d2530 0%, #2f3338 50%, #1b2028 100%);
+}
+
+.intro-content { max-width: 900px; }
+
+.intro-label {
+  font-family: "Source Sans 3", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.intro h1 {
+  font-family: "Source Sans 3", Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 8vw, 5.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1.05;
+  margin-bottom: 28px;
+  color: #ffffff;
+}
+
+.intro-role {
+  font-family: "Merriweather", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 48px;
+}
+
+.scroll-down {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.scroll-down:hover {
+  background: #ffffff;
+  color: #1d2530;
+}
+
+.intro-bar {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(1000px, calc(100% - 48px));
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(6px);
+}
+
+.intro-tab {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  background: #ffffff;
+  color: #1d2530;
+  font-family: "Source Sans 3", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.intro-social {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-right: 32px;
+}
+
+.intro-social a {
+  color: #ffffff;
+  font-size: 1.4rem;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.intro-social a:hover { opacity: 1; }
+
+@media (max-width: 720px) {
+  .intro h1 { letter-spacing: 0.06em; }
+  .intro-tab { padding: 0 20px; }
+  .intro-social { gap: 16px; padding-right: 20px; }
+}
+  </style>
 </head>
 <body>
 
