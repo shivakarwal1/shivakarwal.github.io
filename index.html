@@ -352,7 +352,129 @@
     @media (max-width: 480px) {
       nav ul { display: none; }
     }
-  </style>
+  /* Contact section (two-column layout) */
+.contact-heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 28px;
+}
+
+.contact-info,
+.contact-form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px;
+  box-shadow: 0 6px 20px rgba(31, 58, 95, 0.06);
+}
+
+.contact-info h3 {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.contact-info p {
+  color: var(--muted);
+  font-size: 0.97rem;
+  margin-bottom: 16px;
+}
+
+.direct-label { margin-top: 28px; }
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.social-links a {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  border-radius: 8px;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.social-links a:hover {
+  background: var(--accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.contact-form label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 18px 0 8px;
+}
+
+.contact-form label:first-of-type { margin-top: 0; }
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(46, 134, 222, 0.2);
+}
+
+.contact-form textarea { resize: vertical; }
+
+.contact-form button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.contact-form button:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 720px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-info, .contact-form { padding: 26px; }
+}</style>
 </head>
 <body>
 
@@ -514,18 +636,38 @@
   </section>
 
   <section id="contact">
-    <div class="container">
-      <div class="contact-box">
-        <h2 class="section-title">Let's Connect</h2>
-        <p>I'm open to new opportunities and collaborations. Feel free to reach out.</p>
-        <div class="contact-links">
-          <a href="mailto:shivakarwal1@gmail.com">Email</a>
-          <a href="https://www.linkedin.com/in/shiva-karwal-b09ab11a7" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+  <div class="container">
+    <h2 class="section-title contact-heading">Get In Touch</h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Let's Connect</h3>
+        <p>I'm currently open to new opportunities and collaborations. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+        <p class="direct-label">You can also reach me directly at:</p>
+        <div class="social-links">
+          <a href="https://www.www.linkedin.com/in/shiva-karwal-b09ab11a7 target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/shivakarwal1" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
         </div>
       </div>
+
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label for="name"><i class="fa-solid fa-user"></i> Name</label>
+        <input id="name" type="text" name="name" placeholder="Your name" required>
+
+        <label for="email"><i class="fa-solid fa-envelope"></i> Email</label>
+        <input id="email" type="email" name="email" placeholder="your.email@example.com" required>
+
+        <label for="subject"><i class="fa-solid fa-paper-plane"></i> Subject</label>
+        <input id="subject" type="text" name="subject" placeholder="What's this about?">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Your message here..." required></textarea>
+
+        <button type="submit">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
   <footer>
     <div class="container">
