@@ -138,16 +138,46 @@
   .project-links a:hover { text-decoration: underline; }
 
   /* CONTACT */
-  .contact { text-align: center; }
-  .contact p { max-width: 520px; margin: 0 auto 28px; }
-  .email {
-    display: inline-block; font-size: clamp(1.1rem, 3vw, 1.5rem);
-    color: var(--text); font-weight: 600;
-    border-bottom: 2px solid var(--accent); padding-bottom: 4px;
+  #contact { text-align: left; }
+  .contact-wrap { max-width: 1100px; margin: 0 auto; }
+  .contact-heading { text-align: center; margin-bottom: 48px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; }
+  .contact-info, .contact-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px;
   }
-  .contact .social { justify-content: center; margin-top: 32px; }
-  .contact .social a { background: var(--surface); padding: 12px; border-radius: 50%; }
-  .contact .social svg { width: 22px; height: 22px; }
+  .contact-info h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 16px; }
+  .contact-info p { margin-bottom: 16px; }
+  .direct-label { margin-top: 28px; }
+  .contact-info .social { margin-top: 12px; }
+  .contact-info .social a {
+    width: 48px; height: 48px; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--surface-2); border-radius: 8px;
+  }
+  .contact-form label {
+    display: block; color: var(--text); font-weight: 600;
+    font-size: 0.95rem; margin: 18px 0 8px;
+  }
+  .contact-form label:first-of-type { margin-top: 0; }
+  .contact-form input, .contact-form textarea {
+    width: 100%; padding: 12px 14px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--bg);
+    color: var(--text); font: inherit; font-size: 0.95rem;
+  }
+  .contact-form input:focus, .contact-form textarea:focus {
+    outline: none; border-color: var(--accent);
+  }
+  .contact-form textarea { resize: vertical; }
+  .contact-form button {
+    width: 100%; margin-top: 24px; padding: 14px;
+    border: none; border-radius: 8px;
+    background: var(--accent); color: #1f1f23;
+    font: inherit; font-weight: 700; font-size: 1rem; cursor: pointer;
+  }
+  .contact-form button:hover { opacity: 0.92; }
 
   footer { text-align: center; padding: 32px 24px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); }
 
@@ -158,56 +188,13 @@
     .nav { justify-content: center; text-align: center; }
     .nav-links { justify-content: center; gap: 10px 20px; }
     .nav-links a { font-size: 14px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-info, .contact-form { padding: 26px; }
   }
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; scroll-behavior: auto !important; }
   }
 </style>
-  /* Contact section: form layout blended with the page */
-#contact { text-align: left; }
-.contact-wrap { max-width: 1100px; margin: 0 auto; }
-.contact-heading { text-align: center; margin-bottom: 48px; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; }
-.contact-info, .contact-form {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 36px;
-}
-.contact-info h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 16px; }
-.contact-info p { margin-bottom: 16px; }
-.direct-label { margin-top: 28px; }
-.contact-info .social { margin-top: 12px; }
-.contact-info .social a {
-  width: 48px; height: 48px; padding: 0;
-  display: inline-flex; align-items: center; justify-content: center;
-  background: var(--surface-2); border-radius: 8px;
-}
-.contact-form label {
-  display: block; color: var(--text); font-weight: 600;
-  font-size: 0.95rem; margin: 18px 0 8px;
-}
-.contact-form label:first-of-type { margin-top: 0; }
-.contact-form input, .contact-form textarea {
-  width: 100%; padding: 12px 14px; border-radius: 8px;
-  border: 1px solid var(--border); background: var(--bg);
-  color: var(--text); font: inherit; font-size: 0.95rem;
-}
-.contact-form input:focus, .contact-form textarea:focus {
-  outline: none; border-color: var(--accent);
-}
-.contact-form textarea { resize: vertical; }
-.contact-form button {
-  width: 100%; margin-top: 24px; padding: 14px;
-  border: none; border-radius: 8px;
-  background: var(--accent); color: #1f1f23;
-  font: inherit; font-weight: 700; font-size: 1rem; cursor: pointer;
-}
-.contact-form button:hover { opacity: 0.92; }
-@media (max-width: 760px) {
-  .contact-grid { grid-template-columns: 1fr; }
-  .contact-info, .contact-form { padding: 26px; }
-}
 </head>
 <body>
 
@@ -221,11 +208,11 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="social">
-      <a href="https://linkedin.com/in/yourname" aria-label="LinkedIn" target="_blank" rel="noopener">
+      <a href="https://www.linkedin.com/in/shiva-karwal-b09ab11a7" aria-label="LinkedIn" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
       </a>
-      <a href="https://github.com/yourname" aria-label="GitHub" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.57v-2.02c-3.34.71-4.04-1.57-4.04-1.57-.55-1.35-1.34-1.71-1.34-1.71-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.83 0-1.29.47-2.34 1.24-3.17-.12-.3-.54-1.5.12-3.13 0 0 1.01-.32 3.3 1.21a11.6 11.6 0 0 1 6 0c2.29-1.53 3.3-1.21 3.3-1.21.66 1.63.24 2.83.12 3.13.77.83 1.24 1.88 1.24 3.17 0 4.53-2.81 5.52-5.490 5.820.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.57C20.57 21.92 24 17.5 24 12.29 24 5.78 18.63.5 12 .5z"/></svg>
+      <a href="https://github.com/shivakarwal1" aria-label="GitHub" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.57v-2.02c-3.34.71-4.04-1.57-4.04-1.57-.55-1.35-1.34-1.71-1.34-1.71-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.83 0-1.29.47-2.34 1.24-3.17-.12-.3-.54-1.5.12-3.13 0 0 1.01-.32 3.3 1.21a11.6 11.6 0 0 1 6 0c2.29-1.53 3.3-1.21 3.3-1.21.66 1.63.24 2.83.12 3.13.77.83 1.24 1.88 1.24 3.17 0 4.53-2.81 5.52-5.49 5.82.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.57C20.57 21.92 24 17.5 24 12.29 24 5.78 18.63.5 12 .5z"/></svg>
       </a>
     </div>
   </nav>
@@ -235,9 +222,9 @@
 
   <section class="hero" id="top">
     <p class="label">Hello, I'm</p>
-    <h1>Your <span>Name</span></h1>
-    <p class="role">Product Designer &amp; Front-End Developer</p>
-    <p class="intro">I design and build clean, useful digital products. I care about clear problems, thoughtful interfaces, and work that holds up in the real world.</p>
+    <h1>Shiva <span>Karwal</span></h1>
+    <p class="role">Data Analyst &amp; Power BI Developer</p>
+    <p class="intro">I turn raw data into clear, actionable insights through interactive dashboards, reporting automation, and data-driven decision support.</p>
     <div class="btns">
       <a href="#projects" class="btn btn-primary">View my work</a>
       <a href="#contact" class="btn btn-ghost">Get in touch</a>
@@ -249,14 +236,14 @@
     <h2>A bit about me</h2>
     <div class="about-grid">
       <div>
-        <p>I'm a designer and developer with several years of experience turning rough ideas into polished products. I work closely with teams to understand users, define the right scope, and ship work that solves real problems.</p>
-        <p>Outside of work, I'm usually sketching interface ideas, reading about typography, or building small side projects to try new tools.</p>
+        <p>Analytical, highly detailed Data Analyst, able to convert complex data into mission-critical information. Advanced in Python and SQL, with experience in data manipulation, statistical modeling, and dynamic visualization using Power BI, Excel, and Tableau.</p>
+        <p>Solid background in database systems and data transformation methodologies, enabling critical decision-making for various organizational programs.</p>
       </div>
       <dl class="facts">
         <dt>Location</dt><dd>City, Country</dd>
-        <dt>Focus</dt><dd>Product design, web development</dd>
+        <dt>Focus</dt><dd>Business intelligence, data analysis</dd>
         <dt>Availability</dt><dd>Open to full-time roles</dd>
-        <dt>Languages</dt><dd>English, Spanish</dd>
+        <dt>Tools</dt><dd>Power BI, SQL, Python, Tableau</dd>
       </dl>
     </div>
   </section>
@@ -267,24 +254,26 @@
     <div class="timeline">
       <div class="job">
         <div class="job-meta">
-          <h3>Senior Product Designer</h3>
-          <span class="date">2023 – Present</span>
+          <h3>Data Analyst</h3>
+          <span class="date">October 2025 – Present</span>
         </div>
-        <p class="company">Company Name</p>
+        <p class="company">Simplain Software Solutions LLC, Diamond Bar</p>
         <ul>
-          <li>Led redesign of the core dashboard, improving task completion by 30%.</li>
-          <li>Built and maintained a shared component library used across three product teams.</li>
+          <li>CSO Dashboard Development: Created an interactive corporate CSO dashboard and published it on Power BI to combine multi-department data streams and give leadership real-time updates of key performance metrics.</li>
+          <li>SSIS Data Integration: Designed and implemented automated ETL pipelines using SQL Server Integration Services (SSIS) for a client company, eliminating manual data handling and improving the efficiency of data extraction and loading.</li>
+          <li>Crystal Reports Optimization: Developed custom Crystal Reports with SQL Server, using complex queries and sub-reports to deliver accurate operational and financial information to external stakeholders.</li>
         </ul>
       </div>
       <div class="job">
         <div class="job-meta">
-          <h3>Front-End Developer</h3>
-          <span class="date">2020 – 2023</span>
+          <h3>Data Analyst</h3>
+          <span class="date">February 2025 – September 2025</span>
         </div>
-        <p class="company">Another Company</p>
+        <p class="company">Business Needs Inc, Diamond Bar</p>
         <ul>
-          <li>Developed responsive marketing and product pages with a focus on performance.</li>
-          <li>Partnered with designers to ship accessible, well-tested interface features.</li>
+          <li>Processed and analyzed large-scale data using advanced Excel and Power BI to generate actionable insights and support data-driven decisions.</li>
+          <li>Created dynamic dashboards and automated reports in Power BI and Excel, providing ease of reporting and information from current data for decision-making.</li>
+          <li>Collaborated with executive leadership and cross-functional teams across Operations, Marketing, Consulting, and IT to execute statistical analyses in Power BI and provided insights well-informed by data.</li>
         </ul>
       </div>
     </div>
@@ -295,32 +284,30 @@
     <h2>What I work with</h2>
     <div class="skill-groups">
       <div class="skill-card">
-        <h3>Design</h3>
+        <h3>Business Intelligence</h3>
         <div class="chips">
-          <span class="chip">Figma</span>
-          <span class="chip">User research</span>
-          <span class="chip">Prototyping</span>
-          <span class="chip">Design systems</span>
-          <span class="chip">Accessibility</span>
+          <span class="chip">Power BI (Desktop &amp; Service)</span>
+          <span class="chip">DAX</span>
+          <span class="chip">Power Query (M)</span>
+          <span class="chip">Data modeling &amp; star schemas</span>
         </div>
       </div>
       <div class="skill-card">
-        <h3>Development</h3>
+        <h3>Data Analysis</h3>
         <div class="chips">
-          <span class="chip">HTML &amp; CSS</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">React</span>
-          <span class="chip">TypeScript</span>
-          <span class="chip">Git</span>
+          <span class="chip">Excel (Pivot tables, advanced formulas)</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Statistical analysis</span>
+          <span class="chip">Data cleaning &amp; transformation</span>
         </div>
       </div>
       <div class="skill-card">
-        <h3>Tools</h3>
+        <h3>Tools &amp; Other</h3>
         <div class="chips">
-          <span class="chip">Notion</span>
-          <span class="chip">Jira</span>
-          <span class="chip">Google Analytics</span>
-          <span class="chip">Maze</span>
+          <span class="chip">Python (pandas, matplotlib)</span>
+          <span class="chip">Git &amp; GitHub</span>
+          <span class="chip">Data visualization</span>
+          <span class="chip">Stakeholder reporting</span>
         </div>
       </div>
     </div>
@@ -331,44 +318,56 @@
     <h2>Selected work</h2>
     <div class="projects">
       <article class="project">
-        <div class="thumb">Project One</div>
+        <div class="thumb">Sales Performance</div>
         <div class="project-body">
-          <h3>Project One</h3>
-          <p>A short description of the problem, your role, and the outcome. Keep it to two or three sentences.</p>
+          <h3>Sales Performance Dashboard</h3>
+          <p>An interactive Power BI report tracking revenue, targets, and regional performance with drill-through pages for detailed analysis.</p>
           <div class="project-links">
-            <a href="#">Case study</a>
-            <a href="#">Live site</a>
-          </div>
-        </div>
-      </article>
-      <article class="project">
-        <div class="thumb">Project Two</div>
-        <div class="project-body">
-          <h3>Project Two</h3>
-          <p>A short description of the problem, your role, and the outcome. Mention the tools or methods you used.</p>
-          <div class="project-links">
-            <a href="#">Case study</a>
-            <a href="#">GitHub</a>
-          </div>
-        </div>
-      </article>
-      <article class="project">
-        <div class="thumb">Project Three</div>
-        <div class="project-body">
-          <h3>Project Three</h3>
-          <p>A short description of the problem, your role, and the outcome. Add a measurable result if you have one.</p>
-          <div class="project-links">
-            <a href="#">Case study</a>
-            <a href="#">Live site</a>
+            <a href="https://github.com/shivakarwal1" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
       </article>
     </div>
   </section>
+
+  <section id="contact">
+    <div class="contact-wrap">
+      <h2 class="contact-heading">Get in touch</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Let's connect</h3>
+          <p>I'm currently open to new opportunities and collaborations. Send me a message and I'll get back to you within a couple of days.</p>
+          <p class="direct-label">You can also reach me directly at:</p>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/shiva-karwal-b09ab11a7" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </a>
+            <a href="https://github.com/shivakarwal1" aria-label="GitHub" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.57v-2.02c-3.34.71-4.04-1.57-4.04-1.57-.55-1.35-1.34-1.71-1.34-1.71-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.83 0-1.29.47-2.34 1.24-3.17-.12-.3-.54-1.5.12-3.13 0 0 1.01-.32 3.3 1.21a11.6 11.6 0 0 1 6 0c2.29-1.53 3.3-1.21 3.3-1.21.66 1.63.24 2.83.12 3.13.77.83 1.24 1.88 1.24 3.17 0 4.53-2.81 5.52-5.49 5.82.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.57C20.57 21.92 24 17.5 24 12.29 24 5.78 18.63.5 12 .5z"/></svg>
+            </a>
+          </div>
+        </div>
+        <form class="contact-form" action="https://formsubmit.co/shivakarwal1@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New message from your portfolio">
+          <input type="hidden" name="_captcha" value="false">
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" placeholder="Your name" required>
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="your.email@example.com" required>
+          <label for="subject">Subject</label>
+          <input id="subject" type="text" name="subject" placeholder="What's this about?">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Your message here..." required></textarea>
+          <button type="submit">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-  &copy; 2026 Your Name. Built with care.
+  &copy; 2026 Shiva Karwal. Built with care.
 </footer>
 
 </body>
