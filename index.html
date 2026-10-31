@@ -687,8 +687,15 @@ nav a { color: rgba(255, 255, 255, 0.82); }
 nav a:hover { color: #9cc3f0; }
 
 footer { color: rgba(255, 255, 255, 0.7); }
-/* Center timeline circles on job titles */
-.job::before { top: 9px; }
+/* Center timeline circles on the line */
+.job::before {
+  top: 9px;
+  left: -29.5px;
+  width: 14px;
+  height: 14px;
+  box-sizing: border-box;
+  transform: translateX(-50%);
+}
   </style>
 </head>
 <body>
