@@ -3,372 +3,364 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Shiva Karwal | Portfolio</title>
+<title>Jordan Lee · Data Analyst</title>
 <style>
   :root {
-    --bg: #1f1f23;
-    --surface: #2a2a30;
-    --surface-2: #33333a;
-    --text: #ececf1;
-    --muted: #a3a3ad;
-    --accent: #e8a87c;
-    --border: rgba(255,255,255,0.08);
-    --nav-grad: linear-gradient(90deg, #4a3b38 0%, #2e2e33 55%, #2a2a2f 100%);
+    --bg: #FAFAF7;
+    --surface: #FFFFFF;
+    --ink: #17181C;
+    --muted: #5E6170;
+    --line: #E4E4DE;
+    --accent: #D9622B;
+    --bar: #17181C;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101114;
+      --surface: #17181C;
+      --ink: #F2F1EC;
+      --muted: #9A9CA8;
+      --line: #2A2C33;
+      --accent: #F08A55;
+      --bar: #F2F1EC;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101114;
+    --surface: #17181C;
+    --ink: #F2F1EC;
+    --muted: #9A9CA8;
+    --line: #2A2C33;
+    --accent: #F08A55;
+    --bar: #F2F1EC;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
   body {
+    margin: 0;
     background: var(--bg);
-    color: var(--text);
-    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
     line-height: 1.6;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
   }
-  a { color: inherit; text-decoration: none; }
-  img { max-width: 100%; display: block; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-  /* NAV */
-  header {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--nav-grad);
-    border-bottom: 1px solid var(--border);
-    padding-top: env(safe-area-inset-top, 0px);
-  }
-  .nav {
-    max-width: 1100px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px 24px;
-    padding: 16px 24px;
-  }
-  .nav-links { display: flex; flex-wrap: wrap; gap: 8px 28px; list-style: none; }
-  .nav-links a {
-    color: #d9d9e0; font-size: 15px; font-weight: 500;
-    padding: 4px 0; border-bottom: 2px solid transparent;
-    transition: color .2s, border-color .2s;
-  }
-  .nav-links a:hover, .nav-links a.active { color: #fff; border-bottom-color: var(--accent); }
-  .social { display: flex; gap: 16px; }
-  .social a { color: #d9d9e0; transition: color .2s, transform .2s; }
-  .social a:hover { color: #fff; transform: translateY(-2px); }
-  .social svg { width: 20px; height: 20px; fill: currentColor; display: block; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 1.25rem; }
 
-  /* LAYOUT */
-  main { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 96px 0; border-bottom: 1px solid var(--border); }
-  section:last-of-type { border-bottom: none; }
-  .label {
-    color: var(--accent); font-size: 13px; font-weight: 600;
-    letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px;
+  /* Top bar */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
   }
-  h1 { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1; font-weight: 700; letter-spacing: -.02em; }
-  h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -.01em; margin-bottom: 24px; }
-  h3 { font-size: 1.15rem; font-weight: 600; }
-  p { color: var(--muted); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 3.5rem; gap: 1rem; }
+  .brand { font-weight: 700; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+  .nav { display: flex; gap: 1.25rem; align-items: center; font-size: 0.9375rem; }
+  .nav a { color: var(--muted); text-decoration: none; }
+  .nav a:hover { color: var(--ink); }
+  .theme-btn {
+    font: inherit; font-size: 0.8125rem; color: var(--muted);
+    background: none; border: 1px solid var(--line); border-radius: 6px;
+    padding: 0.3rem 0.65rem; cursor: pointer;
+  }
 
-  /* HERO */
-  .hero { padding: 120px 0 96px; }
-  .hero h1 span { color: var(--accent); }
-  .hero .role { font-size: 1.25rem; color: var(--text); margin: 16px 0 20px; }
-  .hero .intro { max-width: 620px; font-size: 1.05rem; }
-  .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  /* Hero */
+  .hero { padding: 5rem 0 4rem; }
+  .eyebrow { font-family: var(--mono); font-size: 0.8125rem; color: var(--accent); letter-spacing: 0.04em; margin: 0 0 1rem; }
+  h1 {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    line-height: 1.02; letter-spacing: -0.035em; font-weight: 750;
+    margin: 0 0 1.5rem; max-width: 14em;
+  }
+  .hero p.lede { font-size: 1.2rem; color: var(--muted); max-width: 36em; margin: 0 0 2rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   .btn {
-    padding: 12px 22px; border-radius: 8px; font-size: 15px; font-weight: 600;
-    border: 1px solid var(--border); transition: transform .2s, background .2s;
+    display: inline-block; padding: 0.7rem 1.2rem; border-radius: 8px;
+    font-weight: 600; text-decoration: none; font-size: 0.95rem;
   }
-  .btn-primary { background: var(--accent); color: #1f1f23; border-color: var(--accent); }
-  .btn-ghost { background: var(--surface); color: var(--text); }
-  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--ink); color: var(--bg); }
+  .btn.ghost { border: 1px solid var(--line); color: var(--ink); }
 
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
-  .about-grid p + p { margin-top: 16px; }
-  .facts { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
-  .facts dt { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-top: 16px; }
-  .facts dt:first-child { margin-top: 0; }
-  .facts dd { color: var(--text); font-weight: 500; }
+  /* Stats strip */
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .stat { padding: 1.5rem 1.25rem 1.5rem 0; }
+  .stat + .stat { padding-left: 1.25rem; border-left: 1px solid var(--line); }
+  .stat strong { display: block; font-size: 2rem; letter-spacing: -0.02em; }
+  .stat span { color: var(--muted); font-size: 0.875rem; }
 
-  /* EXPERIENCE */
-  .timeline { position: relative; padding-left: 28px; }
-  .timeline::before {
-    content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px;
-    width: 2px; background: var(--surface-2);
-  }
-  .job { position: relative; margin-bottom: 40px; }
-  .job::before {
-    content: ""; position: absolute; left: -28px; top: 8px;
-    width: 14px; height: 14px; border-radius: 50%;
-    background: var(--bg); border: 2px solid var(--accent);
-  }
-  .job-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-  .job .company { color: var(--accent); font-size: 14px; font-weight: 500; }
-  .job .date { color: var(--muted); font-size: 14px; }
-  .job ul { margin-top: 10px; padding-left: 18px; color: var(--muted); }
-  .job li + li { margin-top: 6px; }
+  /* Sections */
+  section { padding: 4.5rem 0; }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 2.25rem; flex-wrap: wrap; }
+  h2 { font-size: 1.75rem; letter-spacing: -0.02em; margin: 0; }
+  .section-head span { color: var(--muted); font-size: 0.9375rem; }
 
-  /* SKILLS */
-  .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-  .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: transform .25s, border-color .25s; }
-  .skill-card:hover { transform: translateY(-4px); border-color: rgba(232,168,124,.4); }
-  .skill-card h3 { margin-bottom: 14px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip {
-    background: var(--surface-2); color: var(--text);
-    font-size: 13px; padding: 6px 12px; border-radius: 999px;
-    border: 1px solid var(--border);
+  /* Case studies */
+  .cases { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .cases { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.75rem; display: flex; flex-direction: column; gap: 0.9rem;
   }
+  .card .tag { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+  .card h3 { font-size: 1.25rem; margin: 0; letter-spacing: -0.01em; }
+  .card p { margin: 0; color: var(--muted); }
+  .card .result { color: var(--ink); font-weight: 600; margin-top: auto; padding-top: 0.5rem; border-top: 1px solid var(--line); }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 0; padding: 0; }
+  .chips li { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 0.15rem 0.6rem; }
 
-  /* PROJECTS */
-  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-  .project {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 14px; overflow: hidden;
-    transition: transform .25s, border-color .25s;
-  }
-  .project:hover { transform: translateY(-4px); border-color: rgba(232,168,124,.4); }
-  .thumb {
-    height: 180px;
-    background: linear-gradient(135deg, #4a3b38, #2a2a30);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--accent); font-weight: 600; letter-spacing: .05em;
-  }
-  .project-body { padding: 22px; }
-  .project-body h3 { margin-bottom: 8px; }
-  .project-body p { font-size: 15px; margin-bottom: 16px; }
-  .project-links { display: flex; gap: 16px; font-size: 14px; font-weight: 600; }
-  .project-links a { color: var(--accent); }
-  .project-links a:hover { text-decoration: underline; }
+  /* Bar chart */
+  .chart { display: flex; align-items: flex-end; gap: 0.5rem; height: 110px; margin-top: 0.5rem; }
+  .chart div { flex: 1; background: var(--bar); border-radius: 4px 4px 0 0; opacity: 0.85; }
+  .chart div.hl { background: var(--accent); opacity: 1; }
+  .chart-label { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); display: flex; justify-content: space-between; }
 
-  /* CONTACT */
-  #contact { text-align: left; }
-  .contact-wrap { max-width: 1100px; margin: 0 auto; }
-  .contact-heading { text-align: center; margin-bottom: 48px; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; }
-  .contact-info, .contact-form {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 36px;
-  }
-  .contact-info h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 16px; }
-  .contact-info p { margin-bottom: 16px; }
-  .direct-label { margin-top: 28px; }
-  .contact-info .social { margin-top: 12px; }
-  .contact-info .social a {
-    width: 48px; height: 48px; padding: 0;
-    display: inline-flex; align-items: center; justify-content: center;
-    background: var(--surface-2); border-radius: 8px;
-  }
-  .contact-form label {
-    display: block; color: var(--text); font-weight: 600;
-    font-size: 0.95rem; margin: 18px 0 8px;
-  }
-  .contact-form label:first-of-type { margin-top: 0; }
-  .contact-form input, .contact-form textarea {
-    width: 100%; padding: 12px 14px; border-radius: 8px;
-    border: 1px solid var(--border); background: var(--bg);
-    color: var(--text); font: inherit; font-size: 0.95rem;
-  }
-  .contact-form input:focus, .contact-form textarea:focus {
-    outline: none; border-color: var(--accent);
-  }
-  .contact-form textarea { resize: vertical; }
-  .contact-form button {
-    width: 100%; margin-top: 24px; padding: 14px;
-    border: none; border-radius: 8px;
-    background: var(--accent); color: #1f1f23;
-    font: inherit; font-weight: 700; font-size: 1rem; cursor: pointer;
-  }
-  .contact-form button:hover { opacity: 0.92; }
+  /* Skills */
+  .skill-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .skill { border-top: 2px solid var(--ink); padding-top: 1rem; }
+  .skill h3 { font-size: 1rem; margin: 0 0 0.6rem; }
+  .skill ul { list-style: none; margin: 0; padding: 0; color: var(--muted); font-size: 0.95rem; }
+  .skill li { padding: 0.2rem 0; }
 
-  footer { text-align: center; padding: 32px 24px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); }
+  /* Timeline */
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+  .timeline > li { position: relative; padding: 0 0 2rem 1.75rem; }
+  .timeline > li::before {
+    content: ""; position: absolute; left: -5px; top: 0.45rem; width: 9px; height: 9px;
+    border-radius: 50%; background: var(--accent);
+  }
+  .timeline .when { font-family: var(--mono); font-size: 0.8125rem; color: var(--muted); }
+  .timeline h3 { margin: 0.2rem 0 0.2rem; font-size: 1.05rem; }
+  .timeline p { margin: 0; color: var(--muted); }
 
-  /* RESPONSIVE */
-  @media (max-width: 760px) {
-    section { padding: 72px 0; }
-    .about-grid { grid-template-columns: 1fr; gap: 32px; }
-    .nav { justify-content: center; text-align: center; }
-    .nav-links { justify-content: center; gap: 10px 20px; }
-    .nav-links a { font-size: 14px; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .contact-info, .contact-form { padding: 26px; }
+  /* Achievements: one grey bullet each, no timeline dot */
+  .achievements { list-style: none; margin: 0.75rem 0 0; padding: 0; }
+  .achievements li { position: relative; padding: 0 0 0 1rem; margin: 0 0 0.4rem; color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+  .achievements li::before { content: ""; position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; border-radius: 50%; background: var(--muted); }
+  .achievements strong { color: var(--ink); font-weight: 600; }
+
+  /* Contact */
+  .contact { border-top: 1px solid var(--line); }
+  .contact h2 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.03em; margin-bottom: 1rem; }
+  .contact p { color: var(--muted); max-width: 32em; margin: 0 0 1.5rem; font-size: 1.1rem; }
+  .contact .mail { font-size: clamp(1.25rem, 3vw, 1.75rem); font-weight: 650; color: var(--ink); }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 1.5rem 0; color: var(--muted); font-size: 0.875rem;
   }
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; scroll-behavior: auto !important; }
-  }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
 
-<header>
-  <nav class="nav">
-    <ul class="nav-links">
-      <li><a href="#about" class="active">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="social">
-      <a href="https://www.linkedin.com/in/shiva-karwal-b09ab11a7" aria-label="LinkedIn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-      </a>
-      <a href="https://github.com/shivakarwal1" aria-label="GitHub" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.57v-2.02c-3.34.71-4.04-1.57-4.04-1.57-.55-1.35-1.34-1.71-1.34-1.71-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.83 0-1.29.47-2.34 1.24-3.17-.12-.3-.54-1.5.12-3.13 0 0 1.01-.32 3.3 1.21a11.6 11.6 0 0 1 6 0c2.29-1.53 3.3-1.21 3.3-1.21.66 1.63.24 2.83.12 3.13.77.83 1.24 1.88 1.24 3.17 0 4.53-2.81 5.52-5.49 5.82.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.57C20.57 21.92 24 17.5 24 12.29 24 5.78 18.63.5 12 .5z"/></svg>
-      </a>
-    </div>
-  </nav>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">Jordan Lee</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light and dark theme">Theme</button>
+    </nav>
+  </div>
 </header>
 
-<main>
-
-  <section class="hero" id="top">
-    <p class="label">Hello, I'm</p>
-    <h1>Shiva <span>Karwal</span></h1>
-    <p class="role">Data Analyst &amp; Power BI Developer</p>
-    <p class="intro">I turn raw data into clear, actionable insights through interactive dashboards, reporting automation, and data-driven decision support.</p>
-    <div class="btns">
-      <a href="#projects" class="btn btn-primary">View my work</a>
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
-    </div>
-  </section>
-
-  <section id="about">
-    <p class="label">About</p>
-    <h2>A bit about me</h2>
-    <div class="about-grid">
-      <div>
-        <p>Analytical, highly detailed Data Analyst, able to convert complex data into mission-critical information. Advanced in Python and SQL, with experience in data manipulation, statistical modeling, and dynamic visualization using Power BI, Excel.</p>
-        <p>Solid background in database systems and data transformation methodologies, enabling critical decision-making for various organizational programs.</p>
-      </div>
-      <dl class="facts">
-        <dt>Location</dt><dd>City, Country</dd>
-        <dt>Focus</dt><dd>Business intelligence, data analysis</dd>
-        <dt>Availability</dt><dd>Open to full-time roles</dd>
-        <dt>Tools</dt><dd>Power BI, SQL, Python, Tableau</dd>
-      </dl>
-    </div>
-  </section>
-
-  <section id="experience">
-    <p class="label">Experience</p>
-    <h2>Where I've worked</h2>
-    <div class="timeline">
-      <div class="job">
-        <div class="job-meta">
-          <h3>Data Analyst</h3>
-          <span class="date">October 2025 – Present</span>
-        </div>
-        <p class="company">Simplain Software Solutions LLC, Diamond Bar</p>
-        <ul>
-          <li>CSO Dashboard Development: Created an interactive corporate CSO dashboard and published it on Power BI to combine multi-department data streams and give leadership real-time updates of key performance metrics.</li>
-          <li>SSIS Data Integration: Designed and implemented automated ETL pipelines using SQL Server Integration Services (SSIS) for a client company, eliminating manual data handling and improving the efficiency of data extraction and loading.</li>
-          <li>Crystal Reports Optimization: Developed custom Crystal Reports with SQL Server, using complex queries and sub-reports to deliver accurate operational and financial information to external stakeholders.</li>
-        </ul>
-      </div>
-      <div class="job">
-        <div class="job-meta">
-          <h3>Data Analyst</h3>
-          <span class="date">February 2025 – September 2025</span>
-        </div>
-        <p class="company">Business Needs Inc, Diamond Bar</p>
-        <ul>
-          <li>Processed and analyzed large-scale data using advanced Excel and Power BI to generate actionable insights and support data-driven decisions.</li>
-          <li>Created dynamic dashboards and automated reports in Power BI and Excel, providing ease of reporting and information from current data for decision-making.</li>
-          <li>Collaborated with executive leadership and cross-functional teams across Operations, Marketing, Consulting, and IT to execute statistical analyses in Power BI and provided insights well-informed by data.</li>
-        </ul>
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <p class="eyebrow">Data Analyst · Open to new roles</p>
+      <h1>I turn messy operational data into reports leaders use every week.</h1>
+      <p class="lede">I build SQL pipelines, dashboards, and A/B test frameworks for retail, SaaS, and e-commerce teams. Tell me your question and I'll show you what the data says.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">View case studies</a>
+        <a class="btn ghost" href="mailto:jordan@example.com?subject=Data%20project%20enquiry">Start a conversation</a>
       </div>
     </div>
-  </section>
 
-  <section id="skills">
-    <p class="label">Skills</p>
-    <h2>What I work with</h2>
-    <div class="skill-groups">
-      <div class="skill-card">
-        <h3>Business Intelligence</h3>
-        <div class="chips">
-          <span class="chip">Power BI (Desktop &amp; Service)</span>
-          <span class="chip">DAX</span>
-          <span class="chip">Power Query (M)</span>
-          <span class="chip">Data modeling &amp; star schemas</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Data Analysis</h3>
-        <div class="chips">
-          <span class="chip">Excel (Pivot tables, advanced formulas)</span>
-          <span class="chip">SQL</span>
-          <span class="chip">Statistical analysis</span>
-          <span class="chip">Data cleaning &amp; transformation</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Tools &amp; Other</h3>
-        <div class="chips">
-          <span class="chip">Python (pandas, matplotlib)</span>
-          <span class="chip">Git &amp; GitHub</span>
-          <span class="chip">Data visualization</span>
-          <span class="chip">Stakeholder reporting</span>
-        </div>
-      </div>
+    <div class="stats">
+      <div class="stat"><strong>6+</strong><span>years analysing data</span></div>
+      <div class="stat"><strong>40+</strong><span>dashboards shipped</span></div>
+      <div class="stat"><strong>12</strong><span>teams supported</span></div>
+      <div class="stat"><strong>3</strong><span>published A/B test wins</span></div>
     </div>
-  </section>
+  </div>
 
-  <section id="projects">
-    <p class="label">Projects</p>
-    <h2>Selected work</h2>
-    <div class="projects">
-      <article class="project">
-        <div class="thumb">Electric Vehicle Population</div>
-        <div class="project-body">
-          <h3>Electric Vehicle Population</h3>
-          <p>This project analyzes an extensive dataset of over 150,000 registered Electric Vehicles (EVs) to uncover trends in EV adoption, vehicle performance (electric range), market pricing, and manufacturer footprints. Through exploratory data analysis and visual communication, the project translates raw data into meaningful insights regarding the shift toward sustainable transportation.</p>
-          <div class="project-links">
-            <a href="https://github.com/shivakarwal1/Electric-Vehicle-Population.git" target="_blank" rel="noopener">GitHub</a>
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <span>Placeholder projects, swap in your own</span>
+      </div>
+
+      <div class="cases">
+        <article class="card">
+          <div class="tag">Retail · 2024</div>
+          <h3>Store performance dashboard</h3>
+          <p>Replaced a set of hand-built spreadsheets with one live dashboard covering sales, margin and stock for every store.</p>
+          <div class="chart" aria-hidden="true">
+            <div style="height:40%"></div><div style="height:55%"></div><div style="height:48%"></div>
+            <div style="height:70%"></div><div style="height:62%"></div><div class="hl" style="height:90%"></div>
           </div>
-        </div>
-      </article>
-    </div>
-  </section>
+          <div class="chart-label" aria-hidden="true"><span>Jan</span><span>Jun</span></div>
+          <p class="result">Weekly reporting went from 6 hours to 30 minutes.</p>
+          <ul class="chips"><li>SQL</li><li>Power BI</li><li>Python</li></ul>
+        </article>
 
-  <section id="contact">
-    <div class="contact-wrap">
-      <h2 class="contact-heading">Get in touch</h2>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Let's connect</h3>
-          <p>I'm currently open to new opportunities and collaborations. Send me a message and I'll get back to you within a couple of days.</p>
-          <p class="direct-label">You can also reach me directly at:</p>
-          <div class="social">
-            <a href="https://www.linkedin.com/in/shiva-karwal-b09ab11a7" aria-label="LinkedIn" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-            </a>
-            <a href="https://github.com/shivakarwal1" aria-label="GitHub" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.57v-2.02c-3.34.71-4.04-1.57-4.04-1.57-.55-1.35-1.34-1.71-1.34-1.71-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.83 0-1.29.47-2.34 1.24-3.17-.12-.3-.54-1.5.12-3.13 0 0 1.01-.32 3.3 1.21a11.6 11.6 0 0 1 6 0c2.29-1.53 3.3-1.21 3.3-1.21.66 1.63.24 2.83.12 3.13.77.83 1.24 1.88 1.24 3.17 0 4.53-2.81 5.52-5.49 5.82.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.57C20.57 21.92 24 17.5 24 12.29 24 5.78 18.63.5 12 .5z"/></svg>
-            </a>
+        <article class="card">
+          <div class="tag">SaaS · 2023</div>
+          <h3>Customer churn drivers</h3>
+          <p>Modelled which accounts were likely to cancel and which early behaviours predicted it. The findings reshaped onboarding.</p>
+          <div class="chart" aria-hidden="true">
+            <div style="height:88%"></div><div style="height:74%"></div><div style="height:66%"></div>
+            <div style="height:52%"></div><div style="height:45%"></div><div class="hl" style="height:30%"></div>
           </div>
-        </div>
-        <form class="contact-form" action="https://formsubmit.co/shivakarwal1@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New message from your portfolio">
-          <input type="hidden" name="_captcha" value="false">
-          <label for="name">Name</label>
-          <input id="name" type="text" name="name" placeholder="Your name" required>
-          <label for="email">Email</label>
-          <input id="email" type="email" name="email" placeholder="your.email@example.com" required>
-          <label for="subject">Subject</label>
-          <input id="subject" type="text" name="subject" placeholder="What's this about?">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" placeholder="Your message here..." required></textarea>
-          <button type="submit">Send message</button>
-        </form>
+          <div class="chart-label" aria-hidden="true"><span>Before</span><span>After</span></div>
+          <p class="result">Monthly churn down 1.4 points over two quarters.</p>
+          <ul class="chips"><li>Python</li><li>pandas</li><li>scikit-learn</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">E-commerce · 2022</div>
+          <h3>Marketing attribution model</h3>
+          <p>Compared last-click attribution with a data-driven model and showed where budget was being credited to the wrong channels.</p>
+          <div class="chart" aria-hidden="true">
+            <div style="height:35%"></div><div style="height:50%"></div><div style="height:65%"></div>
+            <div style="height:58%"></div><div style="height:82%"></div><div class="hl" style="height:95%"></div>
+          </div>
+          <div class="chart-label" aria-hidden="true"><span>Search</span><span>Social</span></div>
+          <p class="result">Moved 20% of ad spend to higher-return channels.</p>
+          <ul class="chips"><li>BigQuery</li><li>dbt</li><li>Looker</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">Fintech · 2025</div>
+          <h3>Experiment analysis framework</h3>
+          <p>Standardised how the team designs, runs and reads A/B tests, including power checks and guardrail metrics.</p>
+          <div class="chart" aria-hidden="true">
+            <div style="height:60%"></div><div style="height:64%"></div><div style="height:72%"></div>
+            <div style="height:70%"></div><div style="height:80%"></div><div class="hl" style="height:86%"></div>
+          </div>
+          <div class="chart-label" aria-hidden="true"><span>Q1</span><span>Q4</span></div>
+          <p class="result">Test cycle time cut from three weeks to one.</p>
+          <ul class="chips"><li>R</li><li>Statsig</li><li>SQL</li></ul>
+        </article>
       </div>
     </div>
   </section>
 
+  <section id="skills" style="border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head"><h2>Skills</h2></div>
+      <div class="skill-grid">
+        <div class="skill">
+          <h3>Analysis</h3>
+          <ul>
+            <li>SQL and query tuning</li>
+            <li>Hypothesis testing and A/B design</li>
+            <li>Forecasting and segmentation</li>
+            <li>Data quality checks</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>Engineering</h3>
+          <ul>
+            <li>Python (pandas, numpy)</li>
+            <li>dbt and version control with Git</li>
+            <li>PostgreSQL and BigQuery</li>
+            <li>Basic ETL pipelines</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>Communication</h3>
+          <ul>
+            <li>Dashboards for non-technical users</li>
+            <li>Writing short analysis memos</li>
+            <li>Presenting to leadership</li>
+            <li>Stakeholder workshops</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" style="border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head"><h2>Experience</h2></div>
+      <ol class="timeline">
+        <li>
+          <span class="when">2023 – Present</span>
+          <h3>Senior Data Analyst, Northwind Retail</h3>
+          <ul class="achievements">
+            <li><strong>CSO Dashboard Development:</strong> Created an interactive corporate CSO dashboard and published it on Power BI to combine multi-department data streams and give leadership real-time updates of key performance metrics to help inform and expedite strategic decisions.</li>
+            <li><strong>SSIS Data Integration:</strong> Designed and implemented automated ETL pipeline systems using SQL Server Integration Services (SSIS) for a client company. This automation enhanced the efficiency of the data extraction and loading processes and enabled manual data handling to be eliminated and data integrity to be maintained at 100%.</li>
+            <li><strong>Crystal Reports Optimization:</strong> Developed a full range of custom Crystal Reports with SQL Server, building high-accuracy operational/financial information for use by outsiders using complex queries and sub-reports.</li>
+          </ul>
+        </li>
+        <li>
+          <span class="when">2020 – 2023</span>
+          <h3>Data Analyst, Brightpath SaaS</h3>
+          <p>Owned product and retention analytics, and built the churn model used by customer success.</p>
+        </li>
+        <li>
+          <span class="when">2018 – 2020</span>
+          <h3>Junior Analyst, Harbor Commerce</h3>
+          <p>Built reporting pipelines and the first attribution analysis for the marketing team.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="resume" style="border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Resume</h2>
+        <span>Updated 2026</span>
+      </div>
+      <p style="color: var(--muted); max-width: 32em; margin: 0 0 1.5rem;">Download a PDF version of my resume with full work history, education, and certifications.</p>
+      <a class="btn primary" href="resume.pdf" download>Download resume (PDF)</a>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Let's work on your data.</h2>
+      <p>I'm open to analyst roles and short, scoped projects. Email is the quickest way to reach me, and I usually reply within a day.</p>
+      <a class="mail" href="mailto:jordan@example.com">jordan@example.com</a>
+    </div>
+  </section>
 </main>
 
 <footer>
-  &copy; 2026 Shiva Karwal. Built with care.
+  <div class="wrap">
+    <span>© 2026 Jordan Lee</span>
+    <span><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a> · <a href="https://github.com/" rel="noopener">GitHub</a></span>
+  </div>
 </footer>
 
+<script>
+  (function () {
+    var btn = document.getElementById('themeBtn');
+    var root = document.documentElement;
+    btn.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var isDark = current === 'dark' ||
+        (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    });
+  })();
+</script>
 </body>
 </html>
