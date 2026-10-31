@@ -321,20 +321,51 @@
     </div>
   </section>
 
-  <section id="contact" class="contact">
-    <p class="label">Contact</p>
-    <h2>Let's work together</h2>
-    <p>I'm currently open to new opportunities and collaborations. Send me a message and I'll get back to you within a couple of days.</p>
-    <a href="mailto:you@example.com" class="email">you@example.com</a>
-    <div class="social">
-      <a href="https://linkedin.com/in/yourname" aria-label="LinkedIn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-      </a>
-      <a href="https://github.com/yourname" aria-label="GitHub" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.57v-2.02c-3.34.71-4.04-1.57-4.04-1.57-.55-1.35-1.34-1.71-1.34-1.71-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.83 0-1.29.47-2.34 1.24-3.17-.12-.3-.54-1.5.12-3.13 0 0 1.01-.32 3.3 1.21a11.6 11.6 0 0 1 6 0c2.29-1.53 3.3-1.21 3.3-1.21.66 1.63.24 2.83.12 3.13.77.83 1.24 1.88 1.24 3.17 0 4.53-2.81 5.52-5.49 5.82.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.57C20.57 21.92 24 17.5 24 12.29 24 5.78 18.63.5 12 .5z"/></svg>
-      </a>
-    </div>
-  </section>
+ /* Contact section: form layout blended with the page */
+#contact { text-align: left; }
+.contact-wrap { max-width: 1100px; margin: 0 auto; }
+.contact-heading { text-align: center; margin-bottom: 48px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; }
+.contact-info, .contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 36px;
+}
+.contact-info h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 16px; }
+.contact-info p { margin-bottom: 16px; }
+.direct-label { margin-top: 28px; }
+.contact-info .social { margin-top: 12px; }
+.contact-info .social a {
+  width: 48px; height: 48px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--surface-2); border-radius: 8px;
+}
+.contact-form label {
+  display: block; color: var(--text); font-weight: 600;
+  font-size: 0.95rem; margin: 18px 0 8px;
+}
+.contact-form label:first-of-type { margin-top: 0; }
+.contact-form input, .contact-form textarea {
+  width: 100%; padding: 12px 14px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg);
+  color: var(--text); font: inherit; font-size: 0.95rem;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: none; border-color: var(--accent);
+}
+.contact-form textarea { resize: vertical; }
+.contact-form button {
+  width: 100%; margin-top: 24px; padding: 14px;
+  border: none; border-radius: 8px;
+  background: var(--accent); color: #1f1f23;
+  font: inherit; font-weight: 700; font-size: 1rem; cursor: pointer;
+}
+.contact-form button:hover { opacity: 0.92; }
+@media (max-width: 760px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-info, .contact-form { padding: 26px; }
+}
 
 </main>
 
