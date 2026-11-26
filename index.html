@@ -298,20 +298,61 @@
 
   <hr class="divider">
 
-  <section id="projects">
-    <div class="wrap">
-      <p class="label">Projects</p>
-      <h2>Selected work</h2>
-      <article class="proj">
-        <div class="proj-img">Electric Vehicle Population</div>
-        <div class="proj-body">
-          <h3>Electric Vehicle Population</h3>
-          <p>This project analyzes an extensive dataset of over 150,000 registered Electric Vehicles (EVs) to uncover trends in EV adoption, vehicle performance (electric range), market pricing, and manufacturer footprints. Through exploratory data analysis and visual communication, the project translates raw data into meaningful insights about the shift toward sustainable transportation.</p>
-          <a href="https://github.com/" rel="noopener">GitHub →</a>
-        </div>
-      </article>
-    </div>
-  </section>
+<script>
+  (function () {
+    var root = document.querySelector('[data-wf]');
+    if (!root) return;
+
+    var stages = [
+      { name: 'Collect', summary: 'Loaded over 150,000 registered electric vehicle records and checked every field for gaps and duplicates.', tools: 'Python, pandas', challenge: 'Records arrived with inconsistent fields and some duplicates', output: 'Validated raw dataset' },
+      { name: 'Clean', summary: 'Standardised manufacturer names and handled missing electric range values so comparisons were fair.', tools: 'Python, pandas', challenge: 'The same manufacturer appeared under several spellings', output: 'Analysis-ready dataset' },
+      { name: 'Analyse', summary: 'Measured adoption over time, electric range by model, and pricing across manufacturers.', tools: 'Python, pandas, matplotlib', challenge: 'Comparing models with very different numbers of vehicles', output: 'Trends and comparisons' },
+      { name: 'Communicate', summary: 'Turned the findings into charts that show the shift toward sustainable transportation.', tools: 'matplotlib charts', challenge: 'Making the findings clear to readers without a technical background', output: 'Insights ready to act on' }
+    ];
+
+    var track = root.querySelector('.wf-track');
+    var nodes = root.querySelectorAll('.wf-node');
+    var dots = root.querySelectorAll('.wf-dots span');
+    var kicker = root.querySelector('[data-kicker]');
+    var title = root.querySelector('[data-title]');
+    var summary = root.querySelector('[data-summary]');
+    var tools = root.querySelector('[data-tools]');
+    var challenge = root.querySelector('[data-challenge]');
+    var output = root.querySelector('[data-output]');
+    var prev = root.querySelector('[data-prev]');
+    var next = root.querySelector('[data-next]');
+    var cur = 0;
+
+    function render() {
+      var s = stages[cur];
+      nodes.forEach(function (n, i) {
+        n.classList.toggle('is-active', i === cur);
+        n.classList.toggle('is-done', i < cur);
+        if (i === cur) n.setAttribute('aria-current', 'step');
+        else n.removeAttribute('aria-current');
+      });
+      dots.forEach(function (d, i) { d.classList.toggle('on', i === cur); });
+      kicker.textContent = 'Stage ' + (cur + 1) + ' of ' + stages.length;
+      title.textContent = s.name;
+      summary.textContent = s.summary;
+      tools.textContent = s.tools;
+      challenge.textContent = s.challenge;
+      output.textContent = s.output;
+      track.style.setProperty('--p', (cur / (stages.length - 1)) * 100 + '%');
+      prev.disabled = cur === 0;
+      next.disabled = cur === stages.length - 1;
+      next.textContent = cur === stages.length - 1 ? 'Last stage' : 'Next stage';
+    }
+
+    nodes.forEach(function (n, i) {
+      n.addEventListener('click', function () { cur = i; render(); });
+    });
+    prev.addEventListener('click', function () { if (cur > 0) { cur--; render(); } });
+    next.addEventListener('click', function () { if (cur < stages.length - 1) { cur++; render(); } });
+
+    render();
+  })();
+</script>
 
   <hr class="divider">
 
