@@ -64,7 +64,7 @@
     border-bottom: 1px solid var(--line);
     padding-top: env(safe-area-inset-top, 0px);
   }
-  .topnav .wrap { max-width: none; display: flex; justify-content: flex-end; align-items: center; min-height: 3.75rem; gap: 2rem; }
+  .topnav .wrap { display: flex; justify-content: flex-end; align-items: center; min-height: 3.75rem; gap: 2rem; }
   .brand { margin-right: auto; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; white-space: nowrap; }
   .brand span { color: var(--accent); }
   .topnav .links { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
@@ -657,3 +657,30 @@
     function setActive(id) {
       links.forEach(function (a) {
         var on = a.getAttribute('href') === '#' + id;
+        a.classList.toggle('active', on);
+        if (on) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    }
+
+    // A section counts as current when it crosses the middle band of the screen
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) setActive(e.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { observer.observe(s); });
+
+    // Short sections at the bottom never reach the middle band, so use the last one at the end of the page
+    function atBottom() {
+      return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    }
+    window.addEventListener('scroll', function () {
+      if (atBottom()) setActive(sections[sections.length - 1].id);
+    }, { passive: true });
+
+    setActive('about');
+  })();
+</script>
+</body>
+</html>
